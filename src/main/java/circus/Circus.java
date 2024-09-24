@@ -4,6 +4,7 @@ import circus.animal.Animal;
 import circus.animal.Duck;
 import circus.animal.Parrot;
 import circus.animal.Tiger;
+import circus.stuff.Cage;
 import circus.stuff.Cannon;
 import circus.stuff.Equipment;
 import circus.stuff.Ladder;
@@ -43,18 +44,42 @@ public class Circus {
         return total;
     }
 
-    public static void main(String[] args) {
-        System.out.println("Number of animals " + animals.length);
-        ArrayList<Animal> animalArrayList = new ArrayList<>(Arrays.asList(animals));
-
+    private static void printAllAnimals(ArrayList<Animal> animalArrayList) {
         for (Animal a : animalArrayList) {
             System.out.println(a);
         }
-        System.out.println("Number of animals in the list " + animalArrayList.size());
-        makeAnimalsTalk();
-        System.out.println("Total value of animals " + calculateAssetValue(animals));
-        System.out.println("Total value of equipments " + calculateAssetValue(equipments));
+    }
 
+    public static void main(String[] args) {
 
+        System.out.println("Number of animals: " + animals.length);
+        ArrayList<Animal> animalArrayList = new ArrayList<>(Arrays.asList(animals));
+        System.out.println("Number of animals: " + animalArrayList.size());
+        animalArrayList.add(new Tiger("Sherkhan"));
+        System.out.println("Number of animals: " + animalArrayList.size());
+
+        animalArrayList.add(new Parrot());
+
+        Duck louie = new Duck();
+        animalArrayList.add(louie);
+        Elephant strongOne = new Elephant("StrongOne");
+        animalArrayList.add(strongOne);
+
+        printAllAnimals(animalArrayList);
+
+        Cage<Duck> duckCage = new Cage<>();
+        Duck duck = new Duck("yes");
+        duckCage.lockUp(duck);
+        Parrot parrot = new Parrot("yes2");
+        Cage<Parrot> parrotCage = new Cage<>();
+        parrotCage.lockUp(parrot);
+
+        ArrayList<Cage> cages = new ArrayList<>();
+        cages.add(duckCage);
+        cages.add(parrotCage);
+
+        for(Cage c: cages) {
+            c.release();
+        }
     }
 }
