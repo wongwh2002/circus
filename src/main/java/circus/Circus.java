@@ -1,9 +1,6 @@
 package circus;
 
-import circus.animal.Animal;
-import circus.animal.Duck;
-import circus.animal.Parrot;
-import circus.animal.Tiger;
+import circus.animal.*;
 import circus.stuff.Cage;
 import circus.stuff.Cannon;
 import circus.stuff.Equipment;
@@ -58,9 +55,9 @@ public class Circus {
         animalArrayList.add(new Tiger("Sherkhan"));
         System.out.println("Number of animals: " + animalArrayList.size());
 
-        animalArrayList.add(new Parrot());
+        animalArrayList.add(new Parrot("yes"));
 
-        Duck louie = new Duck();
+        Duck louie = new Duck("no");
         animalArrayList.add(louie);
         Elephant strongOne = new Elephant("StrongOne");
         animalArrayList.add(strongOne);
